@@ -1,7 +1,7 @@
 # AIOS: LLM Agent Operating System
 AIOS, a Large Language Model (LLM) Agent operating system, embeds large language model into Operating Systems (OS) as the brain of the OS, enabling an operating system "with soul" -- an important step towards AGI. AIOS is designed to optimize resource allocation, facilitate context switch across agents, enable concurrent execution of agents, provide tool service for agents, maintain access control for agents, and provide a rich set of toolkits for LLM Agent developers.
 
-**Git clone**
+**Git clone AIOS**
 
 **Make sure you have Python = 3.11**
 Install the required packages using pip
@@ -11,6 +11,7 @@ source activate AIOS
 cd AIOS
 pip install -r requirements.txt
 ```
+**Git clone OpenAGI and install it by pip install**
 
 ### Usage
 If you use open-sourced models from huggingface, you need to setup your [Hugging Face token](https://huggingface.co/settings/tokens) and cache directory
@@ -22,12 +23,6 @@ If you use LLM APIs, you need to setup your API key such as [OpenAI API Key](htt
 ```bash
 export OPENAI_API_KEY=<YOUR OPENAI API KEY>
 export GEMINI_API_KEY=<YOUR GEMINI API KEY>
-```
-
-You can also create .env file from the .env.example file, and then use dotenv to load the environment variables using .env file into your application's environment at runtime.
-
-```bash
-cp .env.example .env
 ```
 #### (1) Demonstration Mode
 In the demonstration mode, we provide a toy example: we hardcode three agents and allow you to change the parameters. Then you can see the output of each step in running multiple agents
@@ -64,18 +59,18 @@ python simulator.py --llm_name gpt-4 --scheduler_log_mode file --agent_log_mode 
 
 Instance of available commands
 ```bash
-run NarrativeAgent: Craft a tale about a valiant warrior on a quest to uncover priceless treasures hidden within a mystical island.
+run MathAgent: Find the volume of a sphere with a radius of 7 units using the formula "(4/3) * pi * r**3".
 print agent
 ```
 
 #### (3) Evaluation Mode
 In the evaluation mode, we allow you to configure different types of predefined agents (MathAgent, NarrativeAgent, RecAgent) with a configurable number of agents for each type. Additionally, you can evaluate the acceleration performance with or without AIOS by comparing the waiting time and turnaround time.
 ```bash
-python eval.py --llm_name gpt-3.5-turbo --agents MathAgent:1,NarrativeAgent:1,RecAgent:1
+python eval.py --llm_name gpt-3.5-turbo --agents MathAgent:1,TravelAgent:1,RecAgent:1,CreationAgent:1,AcademicAgent:1
 ```
 If you want to obtain metrics for either concurrent execution (with AIOS) or sequential execution (without AIOS), you can specify the mode parameter when running the eval.py file."
 ```bash
-python eval.py --llm_name gpt-4 --agents MathAgent:1,NarrativeAgent:1,RecAgent:1 --mode concurrent-only
-python eval.py --llm_name gpt-4 --agents MathAgent:1,NarrativeAgent:1,RecAgent:1 --mode sequential-only
+python eval.py --llm_name gpt-4 --agents MathAgent:1,TravelAgent:1,RecAgent:1,CreationAgent:1,AcademicAgent:1 --mode concurrent-only
+python eval.py --llm_name gpt-4 --agents MathAgent:1,TravelAgent:1,RecAgent:1,CreationAgent:1,AcademicAgent:1 --mode sequential-only
 ```
 
