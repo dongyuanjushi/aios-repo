@@ -73,10 +73,6 @@ In the evaluation mode, we allow you to configure different types of predefined 
 ```bash
 python eval.py --llm_name gpt-3.5-turbo --agents MathAgent:1,NarrativeAgent:1,RecAgent:1
 ```
-You can use bash script to start the agent execution like this
-```bash
-bash scripts/eval/gpt4.sh
-````
 If you want to obtain metrics for either concurrent execution (with AIOS) or sequential execution (without AIOS), you can specify the mode parameter when running the eval.py file."
 ```bash
 python eval.py --llm_name gpt-4 --agents MathAgent:1,NarrativeAgent:1,RecAgent:1 --mode concurrent-only
